@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hosting Web</title>
+    <link rel="stylesheet" href="estilos/estilos.css">
+</head>
+<body>
+<header>
+    <h1>TechNova Solutions</h1>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="quienes.html">Quiénes somos</a>
+        <a href="donde.html">Dónde estamos</a>
+        <a href="referencias.html">Referencias</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="carrito.html">Carrito</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="card">
+        <h2>Hosting Web Profesional</h2>
+        <img src="imagenes/prod3.jpg" alt="Hosting Web" width="300">
+        <p>Alojamiento web rápido, seguro y con soporte técnico 24/7 incluido.</p>
+        <p><strong>Precio: 99€/año</strong></p>
+        <button class="btn" onclick="agregarCarrito()">Añadir al carrito</button>
+    </div>
+</div>
+<script>
+/* Función para guardar Hosting en localStorage */
+function agregarCarrito() {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push({ nombre: "Hosting Web Profesional", precio: 99 });
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert("Hosting añadido al carrito");
+}
+</script>
+</body>
+</html>

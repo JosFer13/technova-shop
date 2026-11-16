@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="estilos/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>TechNova Solutions</h1>
+        <nav>
+        <a href="index.html">Inicio</a>
+        <a href="quienes.html">Quiénes somos</a>
+        <a href="donde.html">Dónde estamos</a>
+        <a href="referencias.html">Referencias</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="carrito.html">Carrito</a>
+    </nav>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>Carrito de la compra</h2>
+            <div id="listaProductos"></div>
+            <h3 id="total">TOTAL: 0 €</h3>
+            <br>
+            <a class="btn" href="confirmacion.html" id="btnComprar">Realizar pedido</a>
+        </div>
+    </div>
+    <script>
+        
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        let lista = document.getElementById("listaProductos");
+        let total = 0;
+
+        if (carrito.length === 0) {
+            
+            lista.innerHTML = "<p style='font-style: italic; color: red;'>No hay productos en el carrito.</p>";
+            document.getElementById("btnComprar").style.display = "none";
+        } else {
+            
+            carrito.forEach(producto => {
+                lista.innerHTML += `<p><strong>${producto.nombre}</strong> - ${producto.precio} €</p>`;
+                total += producto.precio;
+            });
+        }
+        document.getElementById("total").textContent = "TOTAL: " + total + " €";
+    </script>
+</body>
+</html>
